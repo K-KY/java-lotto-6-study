@@ -12,6 +12,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public Lotto(Lotto lotto) {
+        numbers = lotto.numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         LottoValidator.isValidSize(numbers);
         LottoValidator.isValidRange(numbers);
