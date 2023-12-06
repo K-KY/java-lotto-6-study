@@ -24,7 +24,7 @@ public class PurchaseLotto {
     public String toString() {
         StringJoiner lottoIndicator = new StringJoiner("\n");
         generatedLotto.forEach(lotto -> lottoIndicator.add(lotto.toString()));
-        return generatedLotto.size() + "개를 구매 했습니다.\n"+lottoIndicator;
+        return generatedLotto.size() + "개를 구매했습니다.\n"+lottoIndicator;
     }
 
     public void compareLottos(WinLotto winLotto, HashMap<Integer, List<Lotto>> winLottos) {
