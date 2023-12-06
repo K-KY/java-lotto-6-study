@@ -1,7 +1,11 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import lotto.model.BonusNumber;
+import lotto.model.WinLotto;
 import lotto.utils.validator.LottoValidator;
 
 public class Lotto {
@@ -49,5 +53,21 @@ public class Lotto {
 
     public boolean containsNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
+    }
+
+    public boolean containsNumber(BonusNumber bonusNumber) {
+        return bonusNumber.isContains(numbers);
+    }
+
+    public void containsLotto(WinLotto winLotto, HashMap<Integer, List<Lotto>> winLottos) {
+        int containsCount = (int) numbers.stream().filter(winLotto::containsNumber).count();
+        List<Lotto> lotto = winLottos.getOrDefault(containsCount, new ArrayList<>());
+        lotto.add(new Lotto(numbers));
+        winLottos.put(containsCount, lotto);
+    }
+
+    public boolean containsBonusNumber(BonusNumber bonusNumber, Lotto winFive) {
+        return winFive.containsNumber(bonusNumber);
+//        return winFive.stream().filter(lotto -> bonusNumber.isContains(numbers)).collect(Collectors.toList());
     }
 }
