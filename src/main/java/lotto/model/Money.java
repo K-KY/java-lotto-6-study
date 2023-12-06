@@ -11,8 +11,8 @@ public class Money {
     }
 
     private void validate() {
-        MoneyValidator.isUnitFollowed(money);
         MoneyValidator.isMinAmount(money);
+        MoneyValidator.isUnitFollowed(money);
         MoneyValidator.isMaxAmount(money);
     }
 }
