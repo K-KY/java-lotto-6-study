@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.StringJoiner;
 import lotto.Lotto;
@@ -11,6 +12,7 @@ public class PurchaseLotto {
         this.generatedLotto = new ArrayList<>();
         buy(money);
     }
+
     private void buy(Money money) {
         int amount = money.purchaseAmount();
         for (int i = 0; i < amount; i++) {
@@ -23,5 +25,9 @@ public class PurchaseLotto {
         StringJoiner lottoIndicator = new StringJoiner("\n");
         generatedLotto.forEach(lotto -> lottoIndicator.add(lotto.toString()));
         return generatedLotto.size() + "개를 구매 했습니다.\n"+lottoIndicator;
+    }
+
+    public void compareLottos(WinLotto winLotto, HashMap<Integer, List<Lotto>> winLottos) {
+        generatedLotto.forEach(lotto -> lotto.containsLotto(winLotto, winLottos));
     }
 }
