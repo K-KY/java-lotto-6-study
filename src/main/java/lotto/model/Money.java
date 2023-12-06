@@ -15,4 +15,8 @@ public class Money {
         MoneyValidator.isUnitFollowed(money);
         MoneyValidator.isMaxAmount(money);
     }
+
+    public int purchaseAmount() {
+        return money / 1000;
+    }
 }
